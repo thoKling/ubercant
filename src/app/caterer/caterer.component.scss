@@ -1,0 +1,14 @@
+
+.command {
+  margin-bottom: 10px;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#container {
+  height: 100%;
+}

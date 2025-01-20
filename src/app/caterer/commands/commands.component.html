@@ -1,0 +1,25 @@
+<div id="container">
+  <h1>Your commands !</h1>
+  @for (command of command$ | async; track command) {
+    <div class="command">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span>Une commande</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          @for (product of command.products; track product) {
+            <mat-list-item>
+              <span matListItemTitle>{{ product.productId }} {{ product.quantity }}</span>
+            </mat-list-item>
+          }
+        </mat-list>
+        @if (!$last) {
+          <mat-divider></mat-divider>
+        }
+      </mat-expansion-panel>
+    </div>
+  }
+  <button color="primary" mat-raised-button>Add new product</button>
+</div>

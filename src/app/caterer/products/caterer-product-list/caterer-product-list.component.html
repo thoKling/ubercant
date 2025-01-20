@@ -1,0 +1,28 @@
+<div id="container">
+  <div *ngIf="(products$ | async)?.length ?? 0 > 0; else noProducts">
+    <table [dataSource]="products$" class="mat-elevation-z8" mat-table>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let product" mat-cell> {{ product.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th *matHeaderCellDef mat-header-cell> Description</th>
+        <td *matCellDef="let product" mat-cell> {{ product.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th *matHeaderCellDef mat-header-cell> Price</th>
+        <td *matCellDef="let product" mat-cell> {{ product.price | currency }}</td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
+  <ng-template #noProducts>
+    <p>No products available.</p>
+  </ng-template>
+
+  <app-products></app-products>
+</div>

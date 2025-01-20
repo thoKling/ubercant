@@ -1,0 +1,18 @@
+<div>
+  <h2>Add New Product</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+    <mat-form-field>
+      <mat-label>Product Name</mat-label>
+      <input formControlName="name" matInput required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input formControlName="price" matInput required type="number">
+    </mat-form-field>
+    <button color="primary" mat-raised-button type="submit">Add Product</button>
+  </form>
+</div>

@@ -3,26 +3,33 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ubercant": "node dist/ubercant/server/server.mjs"
+    "serve:ssr:ubercant": "node dist/ubercant/server/server.mjs",
+    "generate:swagger": "npm run dl_swagger && npx swagger-typescript-api -p ./api.json -o ./src/app/api/api.ts",
+    "dl_swagger": "curl http://localhost:3000/api-json -o api.json",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
+    "@angular/cdk": "^19.0.5",
     "@angular/common": "^19.0.0",
     "@angular/compiler": "^19.0.0",
     "@angular/core": "^19.0.0",
     "@angular/forms": "^19.0.0",
+    "@angular/material": "^19.0.5",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/platform-server": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@angular/ssr": "^19.0.7",
-    "express": "^4.18.2",
+    "express": "^4.21.2",
+    "path": "^0.12.7",
     "rxjs": "~7.8.0",
+    "swagger-typescript-api": "^13.0.23",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
@@ -40,5 +47,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.6.2"
+  },
+  "engines": {
+    "node": "22.13.0",
+    "npm": "9.6.2"
   }
 }
