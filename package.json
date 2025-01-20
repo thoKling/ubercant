@@ -9,8 +9,7 @@
     "test": "ng test",
     "serve:ssr:ubercant": "node dist/ubercant/server/server.mjs",
     "generate:swagger": "npm run dl_swagger && npx swagger-typescript-api -p ./api.json -o ./src/app/api/api.ts",
-    "dl_swagger": "curl http://localhost:3000/api-json -o api.json",
-    "heroku-postbuild": "ng build"
+    "dl_swagger": "curl http://localhost:3000/api-json -o api.json"
   },
   "private": true,
   "dependencies": {
@@ -31,8 +30,7 @@
     "rxjs": "~7.8.0",
     "swagger-typescript-api": "^13.0.23",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0",
-    "typescript": "~5.6.2"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.0.7",
@@ -49,9 +47,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.6.2"
-  },
-  "engines": {
-    "node": "22.13.0",
-    "npm": "9.6.2"
   }
 }
