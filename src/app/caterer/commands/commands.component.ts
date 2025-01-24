@@ -12,7 +12,6 @@ import {ApiService} from '../../shared/api.service';
   imports: [
     MatList,
     MatListItem,
-    MatButton,
     AsyncPipe,
     MatDivider,
     MatExpansionPanel,

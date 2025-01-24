@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
@@ -19,7 +19,6 @@ import {ApiService} from '../../shared/api.service';
 })
 export class ProductsComponent {
   protected productForm;
-
   private api = inject(ApiService);
 
   constructor(private fb: FormBuilder) {
@@ -30,6 +29,9 @@ export class ProductsComponent {
     });
   }
 
+  @Input() refreshProducts: () => void = () => {
+  };
+
   onSubmit() {
     if (this.productForm.valid) {
       const formValue = this.productForm.getRawValue();
@@ -37,6 +39,8 @@ export class ProductsComponent {
         name: formValue.name,
         price: formValue.price,
         description: formValue.description
+      }).then(() => {
+        this.refreshProducts();
       });
     }
   }

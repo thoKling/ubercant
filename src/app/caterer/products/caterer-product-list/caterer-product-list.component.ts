@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {
   MatCell, MatCellDef,
   MatColumnDef,
@@ -39,4 +39,8 @@ export class CatererProductListComponent {
   protected displayedColumns: string[] = ['name', 'description', 'price'];
   private api = inject(ApiService);
   protected products$: Observable<ProductDto[]> = this.api.getProducts();
+
+  protected refreshProducts: () => void = () => {
+    this.products$ = this.api.getProducts();
+  };
 }
