@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-sponge.eu.auth0.com',
       clientId: 'gntW11hcV1SHrtIvLrLtCILQPAhEU9gA',
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin + '/ubercant/' // TODO: this needs to be changed to accept prod and dev env
       }
     }),
   ]
