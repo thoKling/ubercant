@@ -1,5 +1,5 @@
 <div id="container">
-  <p>commercant works!</p>
+  <h1>Produits disponibles</h1>
   <mat-list>
     <mat-list-item *ngFor="let product of products$ | async">
       <span matListItemTitle>{{ product.name }} - {{ product.price }}€ - {{ product.description }}
@@ -10,6 +10,7 @@
     </mat-list-item>
   </mat-list>
   <span>Total: {{ getTotal() }} €</span>
+  <br>
   <br>
   <button (click)="command()" color="accent" mat-raised-button> Passer commande</button>
 </div>

@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
   MatCell, MatCellDef,
   MatColumnDef,
@@ -13,6 +13,7 @@ import {ApiService} from '../../../shared/api.service';
 import {Observable} from 'rxjs';
 import {ProductDto} from '../../../api/api.ts/Api';
 import {ProductsComponent} from '../products.component';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-caterer-product-list',
@@ -30,7 +31,8 @@ import {ProductsComponent} from '../products.component';
     MatCellDef,
     MatHeaderRowDef,
     MatRowDef,
-    ProductsComponent
+    ProductsComponent,
+    MatProgressSpinner
   ],
   templateUrl: './caterer-product-list.component.html',
   styleUrl: './caterer-product-list.component.scss'

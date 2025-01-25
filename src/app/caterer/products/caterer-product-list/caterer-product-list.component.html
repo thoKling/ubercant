@@ -1,4 +1,5 @@
 <div id="container">
+  <h1>Mes produits</h1>
   <div *ngIf="(products$ | async)?.length ?? 0 > 0; else noProducts">
     <table [dataSource]="products$" class="mat-elevation-z8" mat-table>
       <ng-container matColumnDef="name">
@@ -21,8 +22,9 @@
     </table>
   </div>
   <ng-template #noProducts>
-    <p>No products available.</p>
+    <mat-spinner></mat-spinner>
   </ng-template>
 
+  <div class="littleVerticalSpacer"></div>
   <app-products [refreshProducts]="refreshProducts"></app-products>
 </div>

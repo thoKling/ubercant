@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "deploy_gh_pages": "ng deploy --base-href=\"./\"",
     "serve:ssr:ubercant": "node dist/ubercant/server/server.mjs",
     "generate:swagger": "npm run dl_swagger && npx swagger-typescript-api -p ./api.json -o ./src/app/api/api.ts",
     "dl_swagger": "curl http://localhost:3000/api-json -o api.json"
@@ -25,6 +26,7 @@
     "@angular/platform-server": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@angular/ssr": "^19.0.7",
+    "@auth0/auth0-angular": "^2.2.3",
     "express": "^4.21.2",
     "path": "^0.12.7",
     "rxjs": "~7.8.0",
