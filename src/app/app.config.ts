@@ -5,6 +5,7 @@ import {routes} from './app.routes';
 import {provideClientHydration, withEventReplay} from '@angular/platform-browser';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideAuth0} from '@auth0/auth0-angular';
+import {environment} from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-sponge.eu.auth0.com',
       clientId: 'gntW11hcV1SHrtIvLrLtCILQPAhEU9gA',
       authorizationParams: {
-        redirect_uri: window.location.origin + '/ubercant/' // TODO: this needs to be changed to accept prod and dev env
+        redirect_uri: window.location.origin + environment.contextPath
       }
     }),
   ]

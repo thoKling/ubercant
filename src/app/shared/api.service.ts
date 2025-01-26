@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Api, ProductDto} from '../api/api.ts/Api';
 import {from, map, Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,7 @@ export class ApiService {
   private api: Api<any>;
 
   constructor() {
-    this.api = new Api({baseUrl: "https://ubercant-server-76ed62e87ca2.herokuapp.com"});
-    // local api : http://localhost:3000
+    this.api = new Api({baseUrl: environment.apiUrl});
   }
 
   get product() {
