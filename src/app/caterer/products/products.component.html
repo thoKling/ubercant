@@ -5,6 +5,23 @@
       <mat-label>Product Name</mat-label>
       <input formControlName="name" matInput required>
     </mat-form-field>
+    <ik-upload
+      (onError)="handleUploadError($event)"
+      (onSuccess)="handleUploadSuccess($event)"
+      [authenticator]="authenticator"
+      [onUploadStart]="onUploadStartFunction"
+      [transformation]="{
+      'pre': 'l-text,i-Imagekit,fs-50,l-end',
+      'post': [
+          {
+              'type': 'transformation',
+              'value': 'w-100'
+          }
+      ]
+    }"
+      fileName="test.jpg"
+    >
+    </ik-upload>
     <mat-form-field>
       <mat-label>Description</mat-label>
       <textarea formControlName="description" matInput required></textarea>

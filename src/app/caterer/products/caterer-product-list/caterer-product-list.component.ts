@@ -14,6 +14,7 @@ import {Observable} from 'rxjs';
 import {ProductDto} from '../../../api/api.ts/Api';
 import {ProductsComponent} from '../products.component';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {ImagekitioAngularModule} from 'imagekitio-angular';
 
 @Component({
   selector: 'app-caterer-product-list',
@@ -32,15 +33,24 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
     MatHeaderRowDef,
     MatRowDef,
     ProductsComponent,
-    MatProgressSpinner
+    MatProgressSpinner,
+    ImagekitioAngularModule
   ],
   templateUrl: './caterer-product-list.component.html',
   styleUrl: './caterer-product-list.component.scss'
 })
 export class CatererProductListComponent {
+  protected imgTransformation = [{
+    height: "100",
+    width: "100"
+  }];
   protected displayedColumns: string[] = ['name', 'description', 'price'];
   private api = inject(ApiService);
   protected products$: Observable<ProductDto[]> = this.api.getProducts();
+
+  getImgPath(product: ProductDto) {
+    return (product.imgPath ?? "/tata");
+  }
 
   protected refreshProducts: () => void = () => {
     this.products$ = this.api.getProducts();

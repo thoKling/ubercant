@@ -4,7 +4,12 @@
     <table [dataSource]="products$" class="mat-elevation-z8" mat-table>
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell> Name</th>
-        <td *matCellDef="let product" mat-cell> {{ product.name }}</td>
+        <td *matCellDef="let product" mat-cell>
+          <div class="column">
+            <ik-image [path]="getImgPath(product)" [transformation]="imgTransformation"></ik-image>
+            {{ product.name }}
+          </div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="description">

@@ -1,4 +1,4 @@
-import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
 import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
@@ -6,6 +6,7 @@ import {provideClientHydration, withEventReplay} from '@angular/platform-browser
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideAuth0} from '@auth0/auth0-angular';
 import {environment} from '../environments/environment';
+import {ImagekitioAngularModule} from 'imagekitio-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,8 +18,14 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-sponge.eu.auth0.com',
       clientId: 'gntW11hcV1SHrtIvLrLtCILQPAhEU9gA',
       authorizationParams: {
-        redirect_uri: window.location.origin + environment.contextPath
+        redirect_uri: window.location.origin + environment.clientContextPath
       }
     }),
+    importProvidersFrom(
+      ImagekitioAngularModule.forRoot({
+        urlEndpoint: "https://ik.imagekit.io/4w3h1m1ulv",
+        publicKey: "public_ieZ9IOwccViITXr0m44St8GpIhg=",
+      })
+    )
   ]
 };

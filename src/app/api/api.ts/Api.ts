@@ -22,6 +22,7 @@ export interface ProductDto {
   name: string;
   price: number;
   description: string;
+  imgPath: string;
 }
 
 export type QueryParamsType = Record<string | number, any>;
@@ -318,6 +319,21 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         path: `/product`,
         method: "GET",
         format: "json",
+        ...params,
+      }),
+  };
+  authentication = {
+    /**
+     * No description
+     *
+     * @tags img-auth
+     * @name GetToken
+     * @request GET:/authentication/img-auth/token
+     */
+    getToken: (params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/authentication/img-auth/token`,
+        method: "GET",
         ...params,
       }),
   };
