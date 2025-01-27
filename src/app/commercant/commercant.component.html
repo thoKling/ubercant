@@ -1,14 +1,44 @@
 <div id="container">
   <h1>Produits disponibles</h1>
-  <mat-list>
-    <mat-list-item *ngFor="let product of products$ | async">
-      <span matListItemTitle>{{ product.name }} - {{ product.price }}€ - {{ product.description }}
-        <button (click)="decreaseQuantity(product)" color="warn" mat-icon-button>-</button>
-        <span>{{ getQuantity(product) }}</span>
-        <button (click)="increaseQuantity(product)" color="primary" mat-icon-button>+</button>
-      </span>
-    </mat-list-item>
-  </mat-list>
+  <div *ngIf="(products$ | async)?.length ?? 0 > 0; else noProducts">
+    <table [dataSource]="products$" class="mat-elevation-z8" mat-table>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let product" mat-cell>
+          <div class="column">
+            <ik-image [path]="getImgPath(product)" [transformation]="imgTransformation"></ik-image>
+            {{ product.name }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th *matHeaderCellDef mat-header-cell> Description</th>
+        <td *matCellDef="let product" mat-cell> {{ product.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th *matHeaderCellDef mat-header-cell> Price</th>
+        <td *matCellDef="let product" mat-cell> {{ product.price | currency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th *matHeaderCellDef mat-header-cell>Quantité</th>
+        <td *matCellDef="let product" mat-cell>
+          <button (click)="decreaseQuantity(product)" color="warn" mat-icon-button>-</button>
+          <span>{{ getQuantity(product) }}</span>
+          <button (click)="increaseQuantity(product)" color="primary" mat-icon-button>+</button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
+  <ng-template #noProducts>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+  <br>
   <span>Total: {{ getTotal() }} €</span>
   <br>
   <br>

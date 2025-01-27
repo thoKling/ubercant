@@ -4,6 +4,9 @@ import {RouterLink, RouterOutlet} from "@angular/router";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {ApiService} from '../shared/api.service';
+import {MatIcon} from '@angular/material/icon';
+import {MatIconButton} from '@angular/material/button';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-caterer',
@@ -14,14 +17,17 @@ import {ApiService} from '../shared/api.service';
     MatNavList,
     MatSidenav,
     MatSidenavContent,
-    MatSidenavContainer
+    MatSidenavContainer,
+    MatIcon,
+    MatIconButton,
+    NgIf
   ],
   templateUrl: './caterer.component.html',
   styleUrl: './caterer.component.scss'
 })
 export class CatererComponent {
   protected command$;
-
+  protected sideMenuOpened: boolean = window.innerWidth >= 600;
   private api = inject(ApiService);
 
   constructor() {

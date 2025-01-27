@@ -1,7 +1,19 @@
-#container {
-  padding: 30px;
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: white;
 }
 
-mat-list {
-  background-color: #f0f0f0; /* Example color */
+#container {
+  padding: 30px;
+  background-color: #424242;
+  height: 100%;
 }
+
+.column {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+

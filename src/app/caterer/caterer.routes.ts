@@ -5,6 +5,7 @@ import {CommandsComponent} from './commands/commands.component';
 export const routes: Routes = [
   {
     path: '', component: CatererComponent, children: [
+      {path: '', redirectTo: 'products', pathMatch: 'full'},
       {path: 'commands', component: CommandsComponent},
       {
         path: 'products',

@@ -12,3 +12,9 @@
 #container {
   height: 100%;
 }
+
+.show-only-on-mobile {
+  @media (min-width: 600px) {
+    display: none;
+  }
+}

@@ -8,7 +8,7 @@ import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MatToolbarRow, MatToolbar, MatButton, AsyncPipe],
+  imports: [RouterOutlet, RouterLink, MatToolbarRow, MatToolbar, MatButton],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,30 +1,61 @@
 import {Component, inject} from '@angular/core';
-import {MatList, MatListItem} from '@angular/material/list';
 import {MatButton, MatIconButton} from '@angular/material/button';
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe, CurrencyPipe, NgIf} from '@angular/common';
 import {ShoppingList} from './shoppingList';
 import {ProductDto} from '../api/api.ts/Api';
 import {ApiService} from '../shared/api.service';
+import {ImagekitioAngularModule} from "imagekitio-angular";
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell, MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow, MatRowDef, MatTable
+} from "@angular/material/table";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-commercant',
   imports: [
-    MatList,
-    MatListItem,
     MatButton,
-    MatIconButton,
-    NgForOf,
-    AsyncPipe
+    AsyncPipe,
+    CurrencyPipe,
+    ImagekitioAngularModule,
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatProgressSpinner,
+    MatRow,
+    MatRowDef,
+    MatTable,
+    NgIf,
+    MatHeaderCellDef,
+    MatIconButton
   ],
   templateUrl: './commercant.component.html',
   styleUrl: './commercant.component.scss'
 })
 export class CommercantComponent {
+  protected imgTransformation = [{
+    height: "100",
+    width: "100"
+  }];
+  protected displayedColumns: string[] = ['name', 'description', 'price', 'quantity'];
   private api: ApiService = inject(ApiService);
   private shoppingList = new ShoppingList(this.api);
 
   get products$() {
     return this.shoppingList.products$;
+  }
+
+  getImgPath(product: ProductDto) {
+    return (product.imgPath ?? "/tata");
   }
 
   increaseQuantity(product: ProductDto) {

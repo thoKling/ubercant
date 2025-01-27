@@ -1,11 +1,18 @@
 <mat-sidenav-container id="container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav [opened]="sideMenuOpened" mode="side">
+    <button (click)="sideMenuOpened = !sideMenuOpened" class="show-only-on-mobile" mat-icon-button>
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
     <mat-nav-list>
       <mat-list-item routerLink="commands">Commands</mat-list-item>
       <mat-list-item routerLink="products">Products</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <button (click)="sideMenuOpened = !sideMenuOpened" *ngIf="!sideMenuOpened" class="show-only-on-mobile"
+            mat-icon-button>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
