@@ -1,6 +1,8 @@
+import {environment} from '../../environments/environment';
+
 export const imgAuthenticator = async () => {
   try {
-    const response = await fetch('http://localhost:3000/authentication/img-auth/token');
+    const response = await fetch(`${environment.apiUrl}/authentication/img-auth/token`);
 
     if (!response.ok) {
       // TODO: Handle error
