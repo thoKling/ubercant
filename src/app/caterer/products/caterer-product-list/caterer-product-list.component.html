@@ -1,6 +1,6 @@
 <div id="container">
   <h1>Mes produits</h1>
-  <div *ngIf="(products$ | async)?.length ?? 0 > 0; else noProducts">
+  <div *ngIf="(products$ | async)?.length ?? 0 > 0; else noProducts" id="test">
     <table [dataSource]="products$" class="mat-elevation-z8" mat-table>
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell> Name</th>

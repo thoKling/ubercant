@@ -25,9 +25,9 @@
       <ng-container matColumnDef="quantity">
         <th *matHeaderCellDef mat-header-cell>Quantité</th>
         <td *matCellDef="let product" mat-cell>
-          <button (click)="decreaseQuantity(product)" color="warn" mat-icon-button>-</button>
-          <span>{{ getQuantity(product) }}</span>
-          <button (click)="increaseQuantity(product)" color="primary" mat-icon-button>+</button>
+          <button (click)="decreaseQuantity(product)">-</button>
+          <span class="quantity-text">{{ getQuantity(product) }}</span>
+          <button (click)="increaseQuantity(product)">+</button>
         </td>
       </ng-container>
 

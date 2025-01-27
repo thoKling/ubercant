@@ -6,7 +6,7 @@
 }
 
 #container {
-  padding: 30px;
+  padding: 2vw;
   background-color: #424242;
   height: 100%;
 }
@@ -17,3 +17,10 @@
   flex-direction: column;
 }
 
+.mdc-data-table__cell, .mdc-data-table__header-cell {
+  padding: 4px;
+}
+
+.quantity-text {
+  padding: 8px;
+}
